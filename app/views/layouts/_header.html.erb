@@ -1,48 +1,96 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-color bg-warning">
 
-      <div class="container">
-        <%= link_to "Projecto de Segurança", root_path, class:"navbar-brand text-white" %> 
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          
-          <span class=" d-block navbar-toggler-icon"></span>
-          <span class=" d-block navbar-toggler-icon"></span>
-          <span class=" d-block navbar-toggler-icon"></span>
+<!-- Slide bar -->
+  <div class="flex-shrink-0 p-3 bg-white" style="width: 150px;">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">venx</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#items-collapse" aria-expanded="true">
+          Items
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-            <li class="nav-item">
-              <%= link_to "Visualizar perfis", profiles_path, class: "nav-link" %>
-            </li>
-            <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Criar perfil", new_profile_path, class: "nav-link", "data-turbo-frame": "_top" %>
-            </li>
-
-            <% end %>
+        <div class="collapse show" id="items-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Novo</a></li>
+            <li><a href="#" class="link-dark rounded">Listar</a></li>
+            <li><a href="#" class="link-dark rounded">Editar</a></li>
+            <li><a href="#" class="link-dark rounded">Mais vendidos</a></li>
           </ul>
-          <ul class="nav justify-content-end ">
-          <% if user_signed_in? %>
-             
-            <li class="nav-item">
-            <%= link_to "Segurança", edit_user_registration_path, class: "nav-link"%>
-            </li>
-              <li class="nav-item ">
-              <%= link_to 'Sair', destroy_user_session_path, method: :delete,  class: "nav-link btn btn-outline-light" %>
-            </li>
-            <% else %>
-              <li class="nav-item "> 
-              <%= link_to "Criar conta", new_user_registration_path, class: "nav-link " %>
-              
-            </li>
-              <li class="nav-item">
-              <%= link_to "Entrar", new_user_session_path, class: "nav-link btn btn-outline-light"%>
-            </li>
-            <% end %>
-        </ul>
         </div>
-      </div>
-  </nav>
-</header>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#gestao-collapse" aria-expanded="true">
+          Gestão
+        </button>
+        <div class="collapse show" id="gestao-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Lucro</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#fatura-collapse" aria-expanded="true">
+          Fatura
+        </button>
+        <div class="collapse show" id="fatura-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Histórico</a></li>
+            <li><a href="#" class="link-dark rounded">Guardadas</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#fornecedor-collapse" aria-expanded="true">
+          Fornecedor
+        </button>
+        <div class="collapse show" id="fornecedor-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Novo</a></li>
+            <li><a href="#" class="link-dark rounded">Listar</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <p><a href="#" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Canselar venda</a></p>
+
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          Account
+        </button>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">New...</a></li>
+            <li><a href="#" class="link-dark rounded">Profile</a></li>
+            <li><a href="#" class="link-dark rounded">Settings</a></li>
+            <li><a href="#" class="link-dark rounded">Sign out</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="b-example-divider"></div>
+
+<!-- End Slide bar -->
+
+  <!-- Nav bar-->
+  <div class="container">
+    <ul class="nav justify-content-end my-2">
+      <li class="nav-item">
+        <a class="nav-link active text-dark" aria-current="page" href="#">Painel de vendas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active text-dark" aria-current="page" href="#">Carrinho</a>
+      </li>
+      <li class="nav-item">
+        <div class="mb-3">
+          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Código do produto">
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <!--End Nav bar-->
