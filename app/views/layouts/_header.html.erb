@@ -1,0 +1,48 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-color bg-warning">
+
+      <div class="container">
+        <%= link_to "Projecto de Segurança", root_path, class:"navbar-brand text-white" %> 
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          
+          <span class=" d-block navbar-toggler-icon"></span>
+          <span class=" d-block navbar-toggler-icon"></span>
+          <span class=" d-block navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+            <li class="nav-item">
+              <%= link_to "Visualizar perfis", profiles_path, class: "nav-link" %>
+            </li>
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Criar perfil", new_profile_path, class: "nav-link", "data-turbo-frame": "_top" %>
+            </li>
+
+            <% end %>
+          </ul>
+          <ul class="nav justify-content-end ">
+          <% if user_signed_in? %>
+             
+            <li class="nav-item">
+            <%= link_to "Segurança", edit_user_registration_path, class: "nav-link"%>
+            </li>
+              <li class="nav-item ">
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete,  class: "nav-link btn btn-outline-light" %>
+            </li>
+            <% else %>
+              <li class="nav-item "> 
+              <%= link_to "Criar conta", new_user_registration_path, class: "nav-link " %>
+              
+            </li>
+              <li class="nav-item">
+              <%= link_to "Entrar", new_user_session_path, class: "nav-link btn btn-outline-light"%>
+            </li>
+            <% end %>
+        </ul>
+        </div>
+      </div>
+  </nav>
+</header>
