@@ -6,6 +6,9 @@
       <span class="fs-5 fw-semibold">venx</span>
     </a>
     <ul class="list-unstyled ps-0">
+
+      <% if user_signed_in? %>
+
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#items-collapse" aria-expanded="true">
           Items
@@ -56,6 +59,8 @@
 
       </li>
       <li class="border-top my-3"></li>
+
+      <% end %>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
           Account

@@ -1,6 +1,6 @@
 
 <!-- Nav bar -->
-      
+<% if user_signed_in? %>
   <ul class="nav justify-content-end my-2">
     <li class="nav-item">
       <a class="nav-link active text-dark" aria-current="page" href="#">Painel de vendas</a>
@@ -14,5 +14,6 @@
       </div>
     </li>
   </ul>
+<% end %>
 <!-- End Nav bar -->
 
