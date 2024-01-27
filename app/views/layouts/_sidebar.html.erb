@@ -64,15 +64,9 @@
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <% if user_signed_in? %>
              <li> <%= link_to t("navbar.profile"), new_profile_path, 
-             class: "dlink-dark rounded"%> </li>
+             class: "link-dark rounded"%> </li>
             <li> 
               <%= link_to t("navbar.security"), edit_user_registration_path, 
-              class: "dlink-dark rounded"%> 
-
-              <%= link_to t("navbar.favorite-lands"), favorite_lands_path, 
-              class: "link-dark rounded"%> 
-
-              <%= link_to t("navbar.favorite-houses"), favorite_houses_path, 
               class: "link-dark rounded"%> 
             </li>
             <li> 
@@ -83,17 +77,12 @@
       
           <% if !user_signed_in? %>
             
-            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "dlink-dark rounded" %> </li>
+            <li> <%= link_to t("devise.links.sign.in"), user_session_path, class: "link-dark rounded" %> </li>
          
           <% end %>
           
-            <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "btn btn-pink ms-1" if !user_signed_in?%> 
-            <%= link_to t("devise.links.sign.in"), user_session_path, class: "btn btn-info ms-1" if !user_signed_in?%> 
-        
-            <li><a href="#" class="link-dark rounded">New...</a></li>
-            <li><a href="#" class="link-dark rounded">Profile</a></li>
-            <li><a href="#" class="link-dark rounded">Settings</a></li>
-            <li><a href="#" class="link-dark rounded">Sign out</a></li>
+            <%= link_to t("devise.links.sign.up"), new_user_registration_path, class: "link-dark rounded" if !user_signed_in?%> 
+      
           </ul>
         </div>
       </li>

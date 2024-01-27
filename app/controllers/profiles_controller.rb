@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.includes(:user, :address)
-    if current_user.profile.funcionario?
+    if current_user.profile.adminstrador?
       @profiles = Profile.includes(:user, :address)
     else
       profile = Profile.find_by_user(current_user)
