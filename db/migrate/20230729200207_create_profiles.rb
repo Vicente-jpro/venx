@@ -4,6 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :name_profile
       t.string :phone1
       t.string :phone2
+      t.string :identity_card
       t.string :profile_type
       t.references :user, null: false, foreign_key: true
 

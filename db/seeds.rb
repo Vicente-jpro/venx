@@ -43,6 +43,7 @@ Profile.find_or_create_by!(
     phone2: "666666666",
     profile_type: "FUNCIONARIO",
     gender: "MASCULINO",
+    identity_card: "12345676LA123",
     address: Address.all.sample,
     user: User.first
 )
@@ -52,6 +53,7 @@ Profile.find_or_create_by!(
     phone2: "994444444",
     profile_type: "FUNCIONARIO",
     gender: "MASCULINO",
+    identity_card: "8765433LA123",
     address: Address.all.sample,
     user: User.last
 )

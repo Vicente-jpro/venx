@@ -42,28 +42,6 @@ en:
         leave-blank-if-you-dont-want-to-change-it: leave blank if you don't want to change it
       
   pages: 
-    favorite:
-      lands: 
-        links: 
-          save-as-favorite: Save as favorite
-        form: 
-          prohibited: prohibited this favorite land from being saved
-      houses: 
-        links: 
-          save-as-favorite: Save as favorite
-        form: 
-          prohibited: prohibited this favorite property from being saved
-    houses:
-      title: 
-        actions:
-          create: Create property
-          update: Update property 
-          edit: Editing property
-          form:
-            prohibited: prohibited this property from being saved
-            geografic-Location: Geografic Location
-      links: 
-         see-all-more-photos: See all more photos
     profiles:
       title: 
         actions:
