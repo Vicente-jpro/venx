@@ -3,10 +3,5 @@
 <div id="suppliers">
   <% @suppliers.each do |supplier| %>
     <%= render supplier %>
-    <p>
-      <%= link_to "Show this supplier", supplier %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New supplier", new_supplier_path %>

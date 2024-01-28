@@ -64,6 +64,7 @@ Supplier.find_or_create_by!(
     name_supplier: "Vicente Simão", 
     whatsapp: "344889722",
     telephone: "366666666",
+    email: "forn@gmail.com",
     address: Address.all.sample,
     profile: Profile.all.sample
 )
@@ -71,6 +72,7 @@ Supplier.find_or_create_by!(
     name_supplier: "Vicente Simão", 
     whatsapp: "442222222",
     telephone: "494444444",
+    email: "fornecedor@gmail.com",
     address: Address.all.sample,
     profile: Profile.all.sample
 )

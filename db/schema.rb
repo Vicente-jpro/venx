@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_000158) do
     t.string "name_supplier"
     t.string "whatsapp"
     t.string "telephone"
+    t.string "email"
     t.integer "address_id", null: false
     t.integer "profile_id", null: false
     t.datetime "created_at", null: false
