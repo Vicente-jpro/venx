@@ -33,9 +33,10 @@
 
               <%= form.select :profile_type, Profile.profile_types, 
                 {label: Profile.human_attribute_name(:profile_type)}, class: 'text-light-emphasis' %>
-              <%= form.telephone_field :phone1, label: Profile.human_attribute_name(:phone1), 
+
+              <%= form.telephone_field :whatsapp, label: Profile.human_attribute_name(:whatsapp), 
               class: 'text-light-emphasis' %>
-              <%= form.telephone_field :phone2, label: Profile.human_attribute_name(:phone2), 
+              <%= form.telephone_field :telephone, label: Profile.human_attribute_name(:telephone), 
               class: 'text-light-emphasis' %>
 
               <%= form.telephone_field :identity_card, label: Profile.human_attribute_name(:identity_card), 

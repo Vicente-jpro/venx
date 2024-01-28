@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :suppliers
   resources :profiles
   resources :cities, only: [:province] do 
     member do 

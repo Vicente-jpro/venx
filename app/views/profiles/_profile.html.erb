@@ -16,8 +16,10 @@
                 <%= profile.address.city.city_name %>,  
                 <%= profile.address.city.province.province_name %>
                 <br>
-              <strong><%= t(:telephones) %>: </strong> <%= profile.phone1 %>, <%= profile.phone2 %>
-  
+
+              <strong><%= Profile.human_attribute_name(:whatsapp) %>: <%= profile.whatsapp %>
+              <strong><%= Profile.human_attribute_name(:telephone) %>: <%= profile.telephone %>
+        
           </div>
           <div class="mb-3 d-grid gap-2">
               <%= link_to t("links.edit"), edit_profile_path(profile), class: "btn btn-info" %> 

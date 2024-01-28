@@ -39,8 +39,8 @@ puts "Fim do cadastro de usuários."
 puts "Cadastrando as perfis...."
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
-    phone1: "944889722",
-    phone2: "666666666",
+    whatsapp: "144889722",
+    telephone: "166666666",
     profile_type: "FUNCIONARIO",
     gender: "MASCULINO",
     identity_card: "12345676LA123",
@@ -49,8 +49,8 @@ Profile.find_or_create_by!(
 )
 Profile.find_or_create_by!(
     name_profile: "Vicente Simão", 
-    phone1: "942222222",
-    phone2: "994444444",
+    whatsapp: "244889721",
+    telephone: "266666666",
     profile_type: "FUNCIONARIO",
     gender: "MASCULINO",
     identity_card: "8765433LA123",
@@ -58,3 +58,22 @@ Profile.find_or_create_by!(
     user: User.last
 )
 puts "Fim do cadastro de perfis."
+
+puts "Cadastrando os fornecedor...."
+Supplier.find_or_create_by!(
+    name_supplier: "Vicente Simão", 
+    whatsapp: "344889722",
+    telephone: "366666666",
+    address: Address.all.sample,
+    profile: Profile.all.sample
+)
+Supplier.find_or_create_by!(
+    name_supplier: "Vicente Simão", 
+    whatsapp: "442222222",
+    telephone: "494444444",
+    address: Address.all.sample,
+    profile: Profile.all.sample
+)
+puts "Fim do cadastro do fornecedor."
+
+

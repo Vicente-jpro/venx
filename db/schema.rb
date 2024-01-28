@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_28_000158) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,8 +57,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
 
   create_table "profiles", force: :cascade do |t|
     t.string "name_profile"
-    t.string "phone1"
-    t.string "phone2"
+    t.string "whatsapp"
+    t.string "telephone"
+    t.string "identity_card"
     t.string "profile_type"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -73,6 +74,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
     t.string "province_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name_supplier"
+    t.string "whatsapp"
+    t.string "telephone"
+    t.integer "address_id", null: false
+    t.integer "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_suppliers_on_address_id"
+    t.index ["profile_id"], name: "index_suppliers_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,4 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213149) do
   add_foreign_key "cities", "provinces"
   add_foreign_key "profiles", "addresses"
   add_foreign_key "profiles", "users"
+  add_foreign_key "suppliers", "addresses"
+  add_foreign_key "suppliers", "profiles"
 end

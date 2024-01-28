@@ -39,8 +39,8 @@ en:
         address: Address 
         address_id: Id address
         gender: Gender
-        phone1: Telephone 1
-        phone2: Telephone 2
+        telephone: Telephone
+        whatsapp: Whatsapp
         profile_type: Profile type
         user: Users
         identity_card: National identity card

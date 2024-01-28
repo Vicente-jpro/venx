@@ -8,9 +8,9 @@ class Profile < ApplicationRecord
   end
   
   validates_presence_of :name_profile, :profile_type, :gender
-  validates :phone1, :phone2, presence: true, uniqueness: true
+  validates :whatsapp, :telephone, presence: true, uniqueness: true
 
-  
+
   enum gender: { masculine: "MASCULINO", feminine: "FEMININO" }
   enum profile_type: {
     adminstrador: "ADMINSTRADOR212", 

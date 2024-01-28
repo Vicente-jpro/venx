@@ -33,8 +33,8 @@ pt:
         address: Endereço 
         address_id: Id do endereço
         gender: Genero
-        phone1: Telefone 1
-        phone2: Telefone 2
+        telephone: Telemóvel
+        whatsapp: Whatsapp
         profile_type: Tipo de perfil
         user: Usuário
         identity_card: Cartão de identidade nacional

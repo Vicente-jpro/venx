@@ -95,8 +95,8 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(
         :name_profile, 
-        :phone1, 
-        :phone2, 
+        :whatsapp,
+        :telephone, 
         :profile_type, 
         :gender,
         :image,
