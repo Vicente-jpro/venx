@@ -22,7 +22,16 @@ class CartTempsController < ApplicationController
   # POST /cart_temps or /cart_temps.json
   def create
     @cart_temp = CartTemp.new(cart_temp_params)
+    item = Item.find(@cart_temp.item_id)
+   
+    if  @cart_temp.quantity < item.quantity 
+    
+      item.quantity = item.quantity - @cart_temp.quantity   
+    
+    end
 
+    item.update(item.as_json)
+    
     respond_to do |format|
       if @cart_temp.save
         format.html { redirect_to cart_temp_url(@cart_temp), notice: "Cart temp was successfully created." }

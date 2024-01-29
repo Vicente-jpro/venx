@@ -1,18 +1,18 @@
-<div id="<%= dom_id cart_temp %>">
-  <p>
-    <strong>Quantity:</strong>
-    <%= cart_temp.quantity %>
-  </p>
+  <tr>
+    <div id="<%= dom_id cart_temp %>">
+      <th scope="row"><%= cart_temp.item.item_code %></th>
+      <td scope="col"><%= cart_temp.item.description %></td>
+      <td scope="col"><%= cart_temp.quantity %></td>
+      <td scope="col"><%= cart_temp.item.price %></td>
+      <td scope="col"><%= cart_temp.item.category.name_category %></td>
+      <td scope="col"><%= cart_temp.item.sector.name_sector %></td>
+      <td scope="col"><%= cart_temp.item.price + cart_temp.item.profite_value%></td>
+      <td scope="col"><%= cart_temp.item.profite_value %></td>
+      <td scope="col"><%= cart_temp.item.expiration_date %></td>
+      <td scope="col"><%= cart_temp.abandoned %></td>
 
-  <p>
-    <strong>Abandoned:</strong>
-    <%= cart_temp.abandoned %>
-  </p>
-
-  <p>
-    <strong>Item:</strong>
-    <%= cart_temp.item_id %>
-  </p>
-
-
-</div>
+      <td>
+        <%= button_to "Delete", cart_temp, method: :delete, class:"btn btn-danger" %>
+      </td>
+    </div>
+  </tr>

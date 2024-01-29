@@ -1,4 +1,4 @@
-<%= form_with(model: cart_temp) do |form| %>
+<%=form_with(model: cart_temp) do |form| %>
   <% if cart_temp.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(cart_temp.errors.count, "error") %> prohibited this cart_temp from being saved:</h2>
