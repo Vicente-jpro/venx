@@ -25,15 +25,15 @@ class CartTempsController < ApplicationController
     item = Item.find(@cart_temp.item_id)
    
     if  @cart_temp.quantity < item.quantity 
-    
       item.quantity = item.quantity - @cart_temp.quantity   
-    
     end
 
     item.update(item.as_json)
     
     respond_to do |format|
-      if @cart_temp.save
+      if  @cart_temp.quantity > item.quantity 
+        format.html { redirect_to cart_temps_url, alert: "The quantity of the chosen item must be less than the quantity saved in the database." }
+      elsif @cart_temp.save
         format.html { redirect_to cart_temp_url(@cart_temp), notice: "Cart temp was successfully created." }
         format.json { render :show, status: :created, location: @cart_temp }
       else
@@ -58,6 +58,13 @@ class CartTempsController < ApplicationController
 
   # DELETE /cart_temps/1 or /cart_temps/1.json
   def destroy
+    item = Item.find(@cart_temp.item_id)
+
+    if  @cart_temp.quantity < item.quantity 
+      item.quantity = item.quantity + @cart_temp.quantity   
+    end
+
+    item.update(item.as_json)
     @cart_temp.destroy
 
     respond_to do |format|
