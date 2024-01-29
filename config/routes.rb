@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cart_temps
   resources :items
   resources :categories
   resources :sectors
