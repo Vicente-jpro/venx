@@ -79,3 +79,15 @@ Supplier.find_or_create_by!(
 puts "Fim do cadastro do fornecedor."
 
 
+puts "Cadastrando os sector...."
+Sector.find_or_create_by!(
+    name_sector: "Alimentos", 
+)
+Sector.find_or_create_by!(
+    name_sector: "Frutos", 
+)
+puts "Fim do cadastro do sector."
+
+
+
+
