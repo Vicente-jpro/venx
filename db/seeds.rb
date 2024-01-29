@@ -88,6 +88,15 @@ Sector.find_or_create_by!(
 )
 puts "Fim do cadastro do sector."
 
+puts "Cadastrando os categoria...."
+Category.find_or_create_by!(
+    name_sector: "Alimentação", 
+)
+Category.find_or_create_by!(
+    name_sector: "Desporto", 
+)
+puts "Fim do cadastro do categoria."
+
 
 
 
