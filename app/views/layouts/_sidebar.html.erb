@@ -15,9 +15,14 @@
         </button>
         <div class="collapse show" id="items-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Novo</a></li>
-            <li><a href="#" class="link-dark rounded">Listar</a></li>
-            <li><a href="#" class="link-dark rounded">Editar</a></li>
+           <li> 
+            <%= link_to "New...", new_item_path, 
+              class: "link-dark rounded"%> 
+          </li>
+            <li> 
+            <%= link_to "List all", items_path, 
+              class: "link-dark rounded"%> 
+          </li>
             <li><a href="#" class="link-dark rounded">Mais vendidos</a></li>
           </ul>
         </div>
