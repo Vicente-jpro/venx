@@ -1,0 +1,77 @@
+<%= form_with(model: item) do |form| %>
+  <% if item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name_item, style: "display: block" %>
+    <%= form.text_field :name_item %>
+  </div>
+
+  <div>
+    <%= form.label :manufacturing_date, style: "display: block" %>
+    <%= form.date_field :manufacturing_date %>
+  </div>
+
+  <div>
+    <%= form.label :expiration_date, style: "display: block" %>
+    <%= form.date_field :expiration_date %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, style: "display: block" %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :tax, style: "display: block" %>
+    <%= form.text_field :tax %>
+  </div>
+
+  <div>
+    <%= form.label :item_code, style: "display: block" %>
+    <%= form.text_field :item_code %>
+  </div>
+
+  <div>
+    <%= form.label :profite_value, style: "display: block" %>
+    <%= form.text_field :profite_value %>
+  </div>
+
+  <div>
+    <%= form.label :supplier_id, style: "display: block" %>
+    <%= form.text_field :supplier_id %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, style: "display: block" %>
+    <%= form.text_field :category_id %>
+  </div>
+
+  <div>
+    <%= form.label :profile_id, style: "display: block" %>
+    <%= form.text_field :profile_id %>
+  </div>
+
+  <div>
+    <%= form.label :sector_id, style: "display: block" %>
+    <%= form.text_field :sector_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
