@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<h5 class="fs-3 text-center">Category</h5>
 
-<%= render @category %>
+<!-- Itens escolhidos-->
+<section>
+  <div class="col-sm-6" id="sector">
+    <table class="table table-hover shadow-sm">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name category</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <%= render @category %>
+          
+        </tbody>
+      </table>
+    </div>
+</section>
 
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
-</div>
