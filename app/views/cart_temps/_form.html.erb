@@ -11,22 +11,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
     <%= form.number_field :quantity %>
-  </div>
+    <%= form.hidden_field :abandoned %>
+    <%= form.hidden_field :item_id %>
 
-  <div>
-    <%= form.label :abandoned, style: "display: block" %>
-    <%= form.check_box :abandoned %>
-  </div>
-
-  <div>
-    <%= form.label :item_id, style: "display: block" %>
-    <%= form.text_field :item_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3 d-grid gap-2">
+      <%= form.submit class: "btn btn-info" %>
+    </div>
 <% end %>

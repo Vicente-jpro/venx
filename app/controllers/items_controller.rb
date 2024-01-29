@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def add_cart
+    @items = Item.all
+  end
   # GET /items/1 or /items/1.json
   def show
   end

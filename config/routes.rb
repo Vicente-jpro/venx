@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :cart_temps
-  resources :items
+  resources :items do 
+    collection do 
+      get 'add_cart'
+    end 
+  end 
   resources :categories
   resources :sectors
   resources :suppliers
