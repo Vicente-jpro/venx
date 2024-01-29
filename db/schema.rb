@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_091741) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_095525) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -59,6 +59,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_091741) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_cities_on_province_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "description"
+    t.date "manufacturing_date"
+    t.date "expiration_date"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "tax"
+    t.string "item_code"
+    t.decimal "profite_value"
+    t.integer "supplier_id", null: false
+    t.integer "category_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "sector_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["profile_id"], name: "index_items_on_profile_id"
+    t.index ["sector_id"], name: "index_items_on_sector_id"
+    t.index ["supplier_id"], name: "index_items_on_supplier_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -117,6 +138,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_091741) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "cities"
   add_foreign_key "cities", "provinces"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "profiles"
+  add_foreign_key "items", "sectors"
+  add_foreign_key "items", "suppliers"
   add_foreign_key "profiles", "addresses"
   add_foreign_key "profiles", "users"
   add_foreign_key "suppliers", "addresses"
