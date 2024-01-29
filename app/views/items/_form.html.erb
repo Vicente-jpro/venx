@@ -20,9 +20,9 @@
               <%= form.date_field :manufacturing_date %>
               <%= form.date_field :expiration_date %>
               <%= form.number_field :quantity %>
-              <%= form.text_field :price %>
-              <%= form.text_field :profite_value %>
-              <%= form.text_field :tax %>
+              <%= form.number_field :price %>
+              <%= form.number_field :profite_value %>
+              <%= form.number_field :tax %>
               <%= form.text_field :item_code %>
               <%= form.collection_select :supplier_id, Supplier.order(:name_supplier), :id, :name_supplier, 
               { label: Supplier.model_name.human(count: 1) }, 
