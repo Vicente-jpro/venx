@@ -15,7 +15,8 @@
                 </ul>
               </div>
             <% end %>
-
+              
+              <%= form.text_area :description %>
               <%= form.date_field :manufacturing_date %>
               <%= form.date_field :expiration_date %>
               <%= form.number_field :quantity %>
@@ -33,9 +34,7 @@
               <%= form.collection_select :sector_id, Sector.order(:name_sector), :id, :name_sector, 
               { label: Sector.model_name.human(count: 1) }, 
               {class:"text-light-emphasis"} %> 
-              <%= form.text_area :description %>
-
-              <%= form.text_field :profile_id %>
+             
 
               <div class="mb-3 d-grid gap-2">
                 <%= form.submit class: "btn btn-info" %>

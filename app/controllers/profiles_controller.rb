@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :set_profile_by_user_id, only: [ :new, :update ]
+  before_action :set_profile_by_user, only: [ :new, :update ]
 
   include ProfilesConcerns
 
@@ -87,9 +87,8 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
     
-    def set_profile_by_user_id 
-      @profile ||= Profile.find_by_user_id(current_user.id)
-      @profile
+    def set_profile_by_user
+      @profile ||= Profile.find_by_user(current_user)
     end
     # Only allow a list of trusted parameters through.
     def profile_params

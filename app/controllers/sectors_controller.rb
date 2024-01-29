@@ -1,5 +1,7 @@
 class SectorsController < ApplicationController
   before_action :set_sector, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: [ :update, :create ]
+  before_action :authenticate_user!
 
   # GET /sectors or /sectors.json
   def index
@@ -36,6 +38,7 @@ class SectorsController < ApplicationController
 
   # PATCH/PUT /sectors/1 or /sectors/1.json
   def update
+
     respond_to do |format|
       if @sector.update(sector_params)
         format.html { redirect_to sector_url(@sector), notice: "Sector was successfully updated." }
@@ -60,7 +63,7 @@ class SectorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sector
-      @sector = Sector.find(params[:id])
+      @sector ||= Sector.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
