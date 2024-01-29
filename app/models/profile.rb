@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [140, 140]
   end
+
+  has_many :items
   
   validates_presence_of :name_profile, :profile_type, :gender
   validates :whatsapp, :telephone, presence: true, uniqueness: true
