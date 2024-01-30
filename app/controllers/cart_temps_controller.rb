@@ -23,21 +23,21 @@ class CartTempsController < ApplicationController
   def create
     @cart_temp = CartTemp.new(cart_temp_params)
     item = Item.find(@cart_temp.item_id)
-   
-    if  @cart_temp.quantity < item.quantity 
-      item.quantity = item.quantity - @cart_temp.quantity   
-    end
 
-    item.update(item.as_json)
     
     respond_to do |format|
-      if  @cart_temp.quantity > item.quantity 
-        format.html { redirect_to cart_temps_url, alert: "The quantity of the chosen item must be less than the quantity saved in the database." }
+      if  @cart_temp.quantity <= 0
+        format.html { redirect_to add_cart_items_url, alert: "The number of items must be greater than or equal to 1." }
+      elsif  @cart_temp.quantity > item.quantity 
+        format.html { redirect_to add_cart_items_url, alert: "The quantity of the chosen item must be less than the quantity saved." }
       elsif @cart_temp.save
-        format.html { redirect_to cart_temp_url(@cart_temp), notice: "Cart temp was successfully created." }
+           
+        item.quantity = item.quantity - @cart_temp.quantity   
+        item.update(item.as_json)
+        format.html { redirect_to add_cart_items_url, notice: "Cart temp was successfully created." }
         format.json { render :show, status: :created, location: @cart_temp }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render new, status: :unprocessable_entity }
         format.json { render json: @cart_temp.errors, status: :unprocessable_entity }
       end
     end
