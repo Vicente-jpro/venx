@@ -2,11 +2,12 @@
 <!-- Nav bar -->
 <% if user_signed_in? %>
   <ul class="nav justify-content-end my-2">
-    <li class="nav-item">
-      <a class="nav-link active text-dark" aria-current="page" href="#">Painel de vendas</a>
+        <li class="nav-item">
+      <%= link_to "Add itens to cart", add_cart_items_url, class: "nav-link active text-dark"%> 
     </li>
+
     <li class="nav-item">
-      <a class="nav-link active text-dark" aria-current="page" href="#">Carrinho</a>
+      <%= link_to "Carrinho", cart_temps_path, class: "nav-link active text-dark"%> 
     </li>
     <li class="nav-item">
       <div class="mb-3">
