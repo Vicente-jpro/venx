@@ -24,7 +24,6 @@ class CartTempsController < ApplicationController
     @cart_temp = CartTemp.new(cart_temp_params)
     item = Item.find(@cart_temp.item_id)
 
-    
     respond_to do |format|
       if  @cart_temp.quantity <= 0
         format.html { redirect_to add_cart_items_url, alert: "The number of items must be greater than or equal to 1." }
@@ -41,6 +40,8 @@ class CartTempsController < ApplicationController
         format.json { render json: @cart_temp.errors, status: :unprocessable_entity }
       end
     end
+
+    
   end
 
   # PATCH/PUT /cart_temps/1 or /cart_temps/1.json
@@ -60,9 +61,7 @@ class CartTempsController < ApplicationController
   def destroy
     item = Item.find(@cart_temp.item_id)
 
-    if  @cart_temp.quantity < item.quantity 
-      item.quantity = item.quantity + @cart_temp.quantity   
-    end
+    item.quantity = item.quantity + @cart_temp.quantity   
 
     item.update(item.as_json)
     @cart_temp.destroy
