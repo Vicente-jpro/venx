@@ -13,8 +13,8 @@
 
       <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <%= button_to "+", cart_temp, method: :delete, class:"btn btn-info add_item" %>
-          <%= button_to "-", cart_temp, method: :delete, class:"btn btn-warning remove_item" %>
+          <%= link_to "+", add_one_item_cart_temp_path(cart_temp), class:"btn btn-info" %>
+          <%= link_to "-", remove_one_item_cart_temp_path(cart_temp), class:"btn btn-warning" %> 
         </div>
       </td>
            <td>
