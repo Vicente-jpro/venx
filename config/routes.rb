@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       get 'add_one_item'
       get 'remove_one_item'
     end
+
+    collection do 
+      get 'cart_abandoned'
+    end
   end
   resources :items do 
     collection do 

@@ -70,6 +70,7 @@ class ItemsController < ApplicationController
     end
 
     def set_profile_by_user
+      debugger
       @item.profile ||= Profile.find_by_user(current_user)
     end
 

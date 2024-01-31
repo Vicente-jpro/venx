@@ -9,7 +9,11 @@
       <td scope="col"><%= cart_temp.item.price + cart_temp.item.profite_value%></td>
       <td scope="col"><%= cart_temp.item.profite_value %></td>
       <td scope="col"><%= cart_temp.item.expiration_date %></td>
-      <td scope="col"><%= cart_temp.abandoned %></td>
+      <% if cart_temp.abandoned %>
+         <td scope="col" class="text-success"><%= cart_temp.abandoned %></td>
+      <% else %>
+        <td scope="col" class="text-danger"><%= cart_temp.abandoned %></td>
+      <% end %>
 
       <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">

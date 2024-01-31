@@ -49,47 +49,50 @@ class CartTempsController < ApplicationController
     
   end
 
-    # GET /cart_temps/:id/add_one_item
-    def add_one_item
-      item_in_cart = CartTemp.find(params[:id])
-      item = Item.find(item_in_cart.item_id) 
-      
-      respond_to do |format|
-        if item_out_of_stock?(item) # Item esgotado do stock
-          format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
-        else
-         item_in_cart.quantity += 1
-         item_in_cart.update(item_in_cart.as_json)
-         item.quantity = item.quantity - 1  
-         item.update(item.as_json)
+  # GET /cart_temps/:id/add_one_item
+  def add_one_item
+    item_in_cart = CartTemp.find(params[:id])
+    item = Item.find(item_in_cart.item_id) 
+    
+    respond_to do |format|
+      if item_out_of_stock?(item) # Item esgotado do stock
+        format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
+      else
+        item_in_cart.quantity += 1
+        item_in_cart.update(item_in_cart.as_json)
+        item.quantity = item.quantity - 1  
+        item.update(item.as_json)
 
-         format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
-         format.json { render :show, status: :created, location: @cart_temp } 
-       end
+        format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
+        format.json { render :show, status: :created, location: @cart_temp } 
       end
     end
+  end
 
 
-    # GET /cart_temps/:id/add_one_item
-    def remove_one_item
-      item_in_cart = CartTemp.find(params[:id])
-      item = Item.find(item_in_cart.item_id) 
-      
-      respond_to do |format|
-        if item_out_of_stock?(item) # Item esgotado do stock
-          format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
-        else
-         item_in_cart.quantity -= 1
-         item_in_cart.update(item_in_cart.as_json)
-         item.quantity = item.quantity + 1  
-         item.update(item.as_json)
+  # GET /cart_temps/:id/add_one_item
+  def remove_one_item
+    item_in_cart = CartTemp.find(params[:id])
+    item = Item.find(item_in_cart.item_id) 
+    
+    respond_to do |format|
+      if item_out_of_stock?(item) # Item esgotado do stock
+        format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
+      else
+        item_in_cart.quantity -= 1
+        item_in_cart.update(item_in_cart.as_json)
+        item.quantity = item.quantity + 1  
+        item.update(item.as_json)
 
-         format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
-         format.json { render :show, status: :created, location: @cart_temp } 
-       end
+        format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
+        format.json { render :show, status: :created, location: @cart_temp } 
       end
     end
+  end
 
+  def cart_abandoned
+    @cart_temps = CartTemp.where(abandoned: true)
+  end
   # PATCH/PUT /cart_temps/1 or /cart_temps/1.json
   def update
     respond_to do |format|
