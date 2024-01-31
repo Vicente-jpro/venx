@@ -30,13 +30,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
               <div id="items">
                 <% @items.each do |item| %>
+                 <tr>
                   <%= render item %>
+                 </tr>
                 <% end %>
               </div>
-            </tr>
           </tbody>
         </table>
 
