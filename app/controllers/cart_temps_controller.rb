@@ -1,5 +1,10 @@
 class CartTempsController < ApplicationController
   before_action :set_cart_temp, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+
+  include CartTempsConcerns
+
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /cart_temps or /cart_temps.json
   def index
@@ -44,6 +49,47 @@ class CartTempsController < ApplicationController
     
   end
 
+    # GET /cart_temps/:id/add_one_item
+    def add_one_item
+      item_in_cart = CartTemp.find(params[:id])
+      item = Item.find(item_in_cart.item_id) 
+      
+      respond_to do |format|
+        if item_out_of_stock?(item) # Item esgotado do stock
+          format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
+        else
+         item_in_cart.quantity += 1
+         item_in_cart.update(item_in_cart.as_json)
+         item.quantity = item.quantity - 1  
+         item.update(item.as_json)
+
+         format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
+         format.json { render :show, status: :created, location: @cart_temp } 
+       end
+      end
+    end
+
+
+    # GET /cart_temps/:id/add_one_item
+    def remove_one_item
+      item_in_cart = CartTemp.find(params[:id])
+      item = Item.find(item_in_cart.item_id) 
+      
+      respond_to do |format|
+        if item_out_of_stock?(item) # Item esgotado do stock
+          format.html { redirect_to cart_temps_url, alert: "Item out of stock" }
+        else
+         item_in_cart.quantity -= 1
+         item_in_cart.update(item_in_cart.as_json)
+         item.quantity = item.quantity + 1  
+         item.update(item.as_json)
+
+         format.html { redirect_to cart_temps_url, notice: "Cart temp was successfully created." }
+         format.json { render :show, status: :created, location: @cart_temp } 
+       end
+      end
+    end
+
   # PATCH/PUT /cart_temps/1 or /cart_temps/1.json
   def update
     respond_to do |format|
@@ -76,6 +122,11 @@ class CartTempsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_temp
       @cart_temp = CartTemp.find(params[:id])
+    end
+
+    def invalid_cart
+      logger.error "Invalid cart #{params[:id]}"
+      redirect_to cart_temps_url, info: "Invalid cart."
     end
 
     # Only allow a list of trusted parameters through.

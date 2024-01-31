@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :cart_temps
+  resources :cart_temps do 
+    member do 
+      get 'add_one_item'
+      get 'remove_one_item'
+    end
+  end
   resources :items do 
     collection do 
       get 'add_cart'
