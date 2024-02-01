@@ -13,6 +13,8 @@ class InvoiceTempsController < ApplicationController
   # GET /invoice_temps/new
   def new
     @invoice_temp = InvoiceTemp.new
+    @cart_temps = CartTemp.all
+    @total_cost = CartTemp.total_cost 
   end
 
   # GET /invoice_temps/1/edit

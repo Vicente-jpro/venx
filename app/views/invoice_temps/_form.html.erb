@@ -1,4 +1,5 @@
-<%= form_with(model: invoice_temp) do |form| %>
+
+<%= bootstrap_form_with(model: invoice_temp) do |form| %>
   <% if invoice_temp.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(invoice_temp.errors.count, "error") %> prohibited this invoice_temp from being saved:</h2>
@@ -11,42 +12,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :cliente_name, style: "display: block" %>
     <%= form.text_field :cliente_name %>
-  </div>
-
-  <div>
-    <%= form.label :total, style: "display: block" %>
-    <%= form.text_field :total %>
-  </div>
-
-  <div>
-    <%= form.label :value_delivered_customer, style: "display: block" %>
     <%= form.text_field :value_delivered_customer %>
-  </div>
-
-  <div>
-    <%= form.label :customer_change, style: "display: block" %>
-    <%= form.text_field :customer_change %>
-  </div>
-
-  <div>
-    <%= form.label :payment_method, style: "display: block" %>
-    <%= form.text_field :payment_method %>
-  </div>
-
-  <div>
-    <%= form.label :code_cart, style: "display: block" %>
-    <%= form.text_field :code_cart %>
-  </div>
-
-  <div>
-    <%= form.label :profile_id, style: "display: block" %>
-    <%= form.text_field :profile_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.select :payment_method, InvoiceTemp.payment_methods, class: 'text-light-emphasis' %>
+  
+    <div class="d-grid gap-2 my-1">
+    <%= form.submit "Finalizer venda", class:"btn btn-success"%>
   </div>
 <% end %>
