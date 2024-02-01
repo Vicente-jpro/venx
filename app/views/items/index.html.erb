@@ -3,9 +3,9 @@
     <h5 class="fs-3 text-center">Items</h5>
 
     <section>
-
+      
       <div class="d-grid gap-2 my-1">
-          <button class="btn btn-warning" type="button">Continuar com a venda</button>
+          <%= link_to "Continuar com a venda", cart_temps_path, class: "btn btn-warning"%> 
       </div>
 
       <table class="table table-hover shadow-sm">
@@ -30,13 +30,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
               <div id="items">
                 <% @items.each do |item| %>
+                 <tr>
                   <%= render item %>
+                 </tr>
                 <% end %>
               </div>
-            </tr>
           </tbody>
         </table>
 

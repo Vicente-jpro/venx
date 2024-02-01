@@ -25,26 +25,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+         
               <div id="items">
                 <% @items.each do |item| %>
-                  <div id="<%= dom_id item %>">
-                        <th scope="row"><%= item.item_code %></th>
-                        <td scope="col"><%= item.description %></td>
-                        <td scope="col"><%= item.quantity %></td>
-                        <td scope="col"><%= item.price %></td>
-                        <td scope="col"><%= item.category.name_category %></td>
-                        <td scope="col"><%= item.sector.name_sector %></td>
-                        <td scope="col"><%= item.price + item.profite_value%></td>
-                        <td scope="col"><%= item.profite_value %></td>
-                        <td scope="col"><%= item.expiration_date %></td>
-                        <td>
-                         <%= render "cart_temps/form", cart_temp: add_new_item_to_cart_temp(item) %>
-                        </td>
-                    </div>
+                   <tr>
+                      <div id="<%= dom_id item %>">
+                            <th scope="row"><%= item.item_code %></th>
+                            <td scope="col"><%= item.description %></td>
+                            <td scope="col"><%= item.quantity %></td>
+                            <td scope="col"><%= item.price %></td>
+                            <td scope="col"><%= item.category.name_category %></td>
+                            <td scope="col"><%= item.sector.name_sector %></td>
+                            <td scope="col"><%= item.price + item.profite_value%></td>
+                            <td scope="col"><%= item.profite_value %></td>
+                            <td scope="col"><%= item.expiration_date %></td>
+                            <td>
+                            <%= render "cart_temps/form", cart_temp: add_new_item_to_cart_temp(item) %>
+                            </td>
+                        </div>
+                     </tr>
                 <% end %>
               </div>
-            </tr>
+           
           </tbody>
         </table>
 

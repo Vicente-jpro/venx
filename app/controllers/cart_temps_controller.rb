@@ -9,6 +9,7 @@ class CartTempsController < ApplicationController
   # GET /cart_temps or /cart_temps.json
   def index
     @cart_temps = CartTemp.all
+    @total_cost = CartTemp.total_cost
   end
 
   # GET /cart_temps/1 or /cart_temps/1.json

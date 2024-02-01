@@ -4,3 +4,4 @@
 //= require bootstrap-sprockets
 //= require custom
 //= require sidebars
+//= require_tree .
