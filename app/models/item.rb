@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :profile
   belongs_to :sector
 
-  has_many :carts
+  has_many :cart_temps
+  has_many :cart_historics
 
 end

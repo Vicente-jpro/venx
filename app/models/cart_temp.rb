@@ -5,7 +5,7 @@ class CartTemp < ApplicationRecord
   
   def self.total_cost 
     CartTemp.joins("JOIN items ON items.id = cart_temps.item_id")
-            .sum("price")
+            .sum("price*cart_temps.quantity")
   end
 
   # SELECT sum(price) FROM cart_temps

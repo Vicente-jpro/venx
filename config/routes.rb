@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invoice_temps
   resources :cart_temps do 
     member do 
       get 'add_one_item'
