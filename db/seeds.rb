@@ -81,22 +81,62 @@ puts "Fim do cadastro do fornecedor."
 
 puts "Cadastrando os sector...."
 Sector.find_or_create_by!(
-    name_sector: "Alimentos", 
+    name_sector: "Alimentos" 
 )
 Sector.find_or_create_by!(
-    name_sector: "Frutos", 
+    name_sector: "Frutos"
 )
 puts "Fim do cadastro do sector."
 
 puts "Cadastrando os categoria...."
 Category.find_or_create_by!(
-    name_sector: "Alimentação", 
+    name_category: "Alimentação"
 )
 Category.find_or_create_by!(
-    name_sector: "Desporto", 
+    name_category: "Desporto"
 )
 puts "Fim do cadastro do categoria."
 
+puts "Cadastrando os items...."
+Item.find_or_create_by!(
+    description: "Arroz branco",
+    manufacturing_date: Time.now,
+    expiration_date: Time.now,
+    quantity: 555,
+    price: 4000,
+    tax: 10,
+    item_code: 2453452, 
+    profite_value: 40,
+    supplier: Supplier.first,
+    category: Category.first,
+    profile: Profile.first,
+    sector: Sector.first
 
+)
+puts "Fim do cadastro dos items."
 
+puts "Cadastrando os items...."
+Item.find_or_create_by!(
+    description: "Massa xepa",
+    manufacturing_date: Time.now,
+    expiration_date: Time.now,
+    quantity: 100,
+    price: 6000,
+    item_code: 4534552, 
+    profite_value: 40,
+    supplier: Supplier.last,
+    category: Category.last,
+    profile: Profile.last,
+    sector: Sector.last
+
+)
+puts "Fim do cadastro dos items."
+
+puts "Cadastrando os cart_temp...."
+CartTemp.find_or_create_by!(
+    item: Item.first,
+    quantity: 2,
+    abandoned: true    
+)
+puts "Fim do cadastro dos items."
 

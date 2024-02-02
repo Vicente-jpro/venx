@@ -1,3 +1,18 @@
+  <tr>
+    <div id="<%= dom_id invoice_temp %>">
+      <th scope="row"><%= invoice_temp.item.item_code %></th>
+      <td scope="col"><%= invoice_temp.item.description %></td>
+      <td scope="col"><%= invoice_temp.quantity %></td>
+       <td scope="col"><%= invoice_temp.item.price %></td>
+      <td scope="col"><%= invoice_temp.item.price * invoice_temp.quantity %></td>
+      <td scope="col"><%= invoice_temp.item.category.name_category %></td>
+      <td scope="col"><%= invoice_temp.item.sector.name_sector %></td>
+      <td scope="col"><%= invoice_temp.item.price + cart_temp.item.profite_value%></td>
+      <td scope="col"><%= invoice_temp.item.profite_value %></td>
+    </div>
+  </tr>
+
+
 <div id="<%= dom_id invoice_temp %>">
   <p>
     <strong>Cliente name:</strong>
@@ -22,11 +37,6 @@
   <p>
     <strong>Payment method:</strong>
     <%= invoice_temp.payment_method %>
-  </p>
-
-  <p>
-    <strong>Code cart:</strong>
-    <%= invoice_temp.code_cart %>
   </p>
 
   <p>

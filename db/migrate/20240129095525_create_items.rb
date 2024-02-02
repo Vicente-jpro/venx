@@ -6,7 +6,6 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.date :expiration_date
       t.integer :quantity
       t.decimal :price
-      t.decimal :tax
       t.string :item_code
       t.decimal :profite_value
       t.references :supplier, null: false, foreign_key: true

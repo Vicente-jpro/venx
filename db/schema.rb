@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
 
   create_table "cart_historics", force: :cascade do |t|
     t.integer "item_id", null: false
-    t.integer "quantitiy"
-    t.boolean "abandoned"
+    t.integer "quantity"
+    t.boolean "abandoned", default: false
     t.string "code_cart"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,13 +83,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
   create_table "invoice_temps", force: :cascade do |t|
     t.string "cliente_name"
     t.decimal "total"
-    t.string "value_delivered_customer"
+    t.decimal "sub_total"
+    t.decimal "value_delivered_customer"
     t.decimal "customer_change"
     t.string "payment_method"
-    t.string "code_cart"
     t.integer "profile_id", null: false
+    t.integer "cart_historic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_historic_id"], name: "index_invoice_temps_on_cart_historic_id"
     t.index ["profile_id"], name: "index_invoice_temps_on_profile_id"
   end
 
@@ -172,6 +174,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
   add_foreign_key "cart_historics", "items"
   add_foreign_key "cart_temps", "items"
   add_foreign_key "cities", "provinces"
+  add_foreign_key "invoice_temps", "cart_historics"
   add_foreign_key "invoice_temps", "profiles"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "profiles"

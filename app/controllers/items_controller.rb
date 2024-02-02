@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.profile ||= Profile.find_by_user(current_user)
+    @item.price = @item.price + (@item.price * 0.14) #Teaxa do iva
 
     respond_to do |format|
       if @item.save
