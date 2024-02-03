@@ -34,7 +34,6 @@ class CartTempsController < ApplicationController
 
     respond_to do |format|
       if item_exist
-        debugger
         format.html { redirect_to add_cart_items_url, alert: "The item #{item.description} just exit in cart." }
       elsif @cart_temp.quantity <= 0
         format.html { redirect_to add_cart_items_url, alert: "The number of items must be greater than or equal to 1." }
