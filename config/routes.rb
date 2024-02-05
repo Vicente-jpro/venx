@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :companies
   resources :invoice_temps
   resources :cart_temps do 
     member do 
