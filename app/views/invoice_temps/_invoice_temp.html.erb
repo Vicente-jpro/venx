@@ -1,47 +1,9 @@
   <tr>
     <div id="<%= dom_id invoice_temp %>">
-      <th scope="row"><%= invoice_temp.item.item_code %></th>
-      <td scope="col"><%= invoice_temp.item.description %></td>
-      <td scope="col"><%= invoice_temp.quantity %></td>
-       <td scope="col"><%= invoice_temp.item.price %></td>
-      <td scope="col"><%= invoice_temp.item.price * invoice_temp.quantity %></td>
-      <td scope="col"><%= invoice_temp.item.category.name_category %></td>
-      <td scope="col"><%= invoice_temp.item.sector.name_sector %></td>
-      <td scope="col"><%= invoice_temp.item.price + cart_temp.item.profite_value%></td>
-      <td scope="col"><%= invoice_temp.item.profite_value %></td>
+      <td scope="col"><%= invoice_temp.cart_historic.item.description %></td>
+      <td scope="col"><%= invoice_temp.cart_historic.quantity %></td>
+       <td scope="col"><%= invoice_temp.cart_historic.item.price %></td>
+        <td scope="col">14%</td>
+      <td scope="col"><%= invoice_temp.cart_historic.item.price * invoice_temp.cart_historic.quantity %></td>
     </div>
   </tr>
-
-
-<div id="<%= dom_id invoice_temp %>">
-  <p>
-    <strong>Cliente name:</strong>
-    <%= invoice_temp.cliente_name %>
-  </p>
-
-  <p>
-    <strong>Total:</strong>
-    <%= invoice_temp.total %>
-  </p>
-
-  <p>
-    <strong>Value delivered customer:</strong>
-    <%= invoice_temp.value_delivered_customer %>
-  </p>
-
-  <p>
-    <strong>Customer change:</strong>
-    <%= invoice_temp.customer_change %>
-  </p>
-
-  <p>
-    <strong>Payment method:</strong>
-    <%= invoice_temp.payment_method %>
-  </p>
-
-  <p>
-    <strong>Profile:</strong>
-    <%= invoice_temp.profile_id %>
-  </p>
-
-</div>

@@ -3,7 +3,7 @@ class InvoiceTempsController < ApplicationController
   before_action :authenticate_user!
   # GET /invoice_temps or /invoice_temps.json
   def index
-    @invoice_temps = InvoiceTemp.all
+    @invoice_temps = InvoiceTemp.find_by_cart_historic(CartHistoric.last)
   end
 
   # GET /invoice_temps/1 or /invoice_temps/1.json
@@ -23,21 +23,18 @@ class InvoiceTempsController < ApplicationController
 
   # POST /invoice_temps or /invoice_temps.json
   def create
-    @invoice_temp = InvoiceTemp.new(invoice_temp_params)
+    invoice_temp = InvoiceTemp.new(invoice_temp_params)
     @total_cost = CartTemp.total_cost 
-    value_delivered_customer = @invoice_temp.value_delivered_customer
+    value_delivered_customer = invoice_temp.value_delivered_customer
 
 
     respond_to do |format|
       if value_delivered_customer < @total_cost
-        format.html { redirect_to new_invoice_temp_path(@invoice_temp), alert: "The value entered must be equal to or greater than: #{@total_cost}" }
+        format.html { redirect_to new_invoice_temp_path(invoice_temp), alert: "The value entered must be equal to or greater than: #{@total_cost}" }
       else 
         @cart_temps = CartTemp.all
-        
-        @invoice_temp.profile ||= Profile.find_by_user(current_user)
-        @invoice_temp.total = @total_cost
-        @invoice_temp.customer_change = value_delivered_customer - @total_cost
-        
+
+     
         code = GenerateCode.generate
         @cart_temps.each do |cart| 
           cart_historic = CartHistoric.new
@@ -47,6 +44,15 @@ class InvoiceTempsController < ApplicationController
           cart_historic.code_cart = code
           cart_historic.save
 
+          @invoice_temp = InvoiceTemp.new
+          @invoice_temp.cliente_name = invoice_temp.cliente_name
+          @invoice_temp.value_delivered_customer = invoice_temp.value_delivered_customer
+          @invoice_temp.payment_method = invoice_temp.payment_method 
+          @invoice_temp.profile ||= Profile.find_by_user(current_user)
+          @invoice_temp.total = @total_cost
+          @invoice_temp.customer_change = value_delivered_customer - @total_cost
+          
+
           @invoice_temp.cart_historic = CartHistoric.where(item_id: cart_historic.item_id).take
           @invoice_temp.sub_total = cart.quantity * cart.item.price
           @invoice_temp.save
@@ -54,7 +60,7 @@ class InvoiceTempsController < ApplicationController
        
         format.html { redirect_to invoice_temps_path, notice: "Invoice temp was successfully created." }
 
-        CartTemp.destroy_all
+       # CartTemp.destroy_all
       end
     end
 
