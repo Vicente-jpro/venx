@@ -4,7 +4,7 @@ class CartTempsController < ApplicationController
 
   include CartTempsConcerns
 
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  #rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /cart_temps or /cart_temps.json
   def index
@@ -27,16 +27,20 @@ class CartTempsController < ApplicationController
 
   # POST /cart_temps or /cart_temps.json
   def create
+    
     @cart_temp = CartTemp.new(cart_temp_params)
+    item_exist = CartTemp.find_by(item_id: @cart_temp.item_id)
     item = Item.find(@cart_temp.item_id)
 
     respond_to do |format|
-      if  @cart_temp.quantity <= 0
+      if item_exist
+        format.html { redirect_to add_cart_items_url, alert: "The item #{item.description} just exit in cart." }
+      elsif @cart_temp.quantity <= 0
         format.html { redirect_to add_cart_items_url, alert: "The number of items must be greater than or equal to 1." }
       elsif  @cart_temp.quantity > item.quantity 
         format.html { redirect_to add_cart_items_url, alert: "The quantity of the chosen item must be less than the quantity saved." }
       elsif @cart_temp.save
-           
+          
         item.quantity = item.quantity - @cart_temp.quantity   
         item.update(item.as_json)
         format.html { redirect_to add_cart_items_url, notice: "Cart temp was successfully created." }
@@ -46,8 +50,7 @@ class CartTempsController < ApplicationController
         format.json { render json: @cart_temp.errors, status: :unprocessable_entity }
       end
     end
-
-    
+  
   end
 
   # GET /cart_temps/:id/add_one_item
