@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  
   # GET /companies or /companies.json
   def index
     @companies = Company.all
@@ -13,6 +14,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.build_address
   end
 
   # GET /companies/1/edit

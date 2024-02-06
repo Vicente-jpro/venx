@@ -82,6 +82,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_230301) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
+    t.string "whatsapp"
+    t.string "telephone"
+    t.string "email"
     t.integer "address_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,7 +112,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_230301) do
     t.date "expiration_date"
     t.integer "quantity"
     t.decimal "price"
-    t.decimal "tax"
     t.string "item_code"
     t.decimal "profite_value"
     t.integer "supplier_id", null: false

@@ -104,7 +104,6 @@ Item.find_or_create_by!(
     expiration_date: Time.now,
     quantity: 555,
     price: 4000,
-    tax: 10,
     item_code: 2453452, 
     profite_value: 40,
     supplier: Supplier.first,
