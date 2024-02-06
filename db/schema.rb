@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_230301) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -80,6 +80,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
     t.index ["province_id"], name: "index_cities_on_province_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "whatsapp"
+    t.string "telephone"
+    t.string "email"
+    t.integer "address_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_companies_on_address_id"
+  end
+
   create_table "invoice_temps", force: :cascade do |t|
     t.string "cliente_name"
     t.decimal "total"
@@ -101,7 +112,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
     t.date "expiration_date"
     t.integer "quantity"
     t.decimal "price"
-    t.decimal "tax"
     t.string "item_code"
     t.decimal "profite_value"
     t.integer "supplier_id", null: false
@@ -174,6 +184,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_152815) do
   add_foreign_key "cart_historics", "items"
   add_foreign_key "cart_temps", "items"
   add_foreign_key "cities", "provinces"
+  add_foreign_key "companies", "addresses"
   add_foreign_key "invoice_temps", "cart_historics"
   add_foreign_key "invoice_temps", "profiles"
   add_foreign_key "items", "categories"
